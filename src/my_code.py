@@ -61,10 +61,16 @@ while game_playing == "pigeon simulator" or "yes":
                 print(f"you have {money} crumbs")
             else:
                 print("you don't have enough crumbs")  # end of shop
-        if shop == "bakery":
+        if shop == "bakery" or "a bakery":
             if money >= 3000:
-                print("you won, you now have an easy way to get bread!")
-                break
+                for i in range(3):
+                    if i == 0:
+                        print("you won, you now have an easy way to get bread!")
+                    elif i == 1:
+                        print("your so cool!")
+                    else:
+                        print("your such a gamer!")
+                        break
             else:
                 print("you don't have enough money")
     if fate == "steal a pizza":
