@@ -1,7 +1,7 @@
-# Project Title
-* Focus Day: (delete if not applicable)
+# pigeon simulator
 
-written by: 
+
+written by: Owen Hughes
 
 ## About this project
-*Add info about project here* 
+This is a game where you are a pigeon. You try to get some bread to eat by using varous methods. You can use the bread to get upgrades that help you get even more bread. The game ends when you get the bakery upgrade.
