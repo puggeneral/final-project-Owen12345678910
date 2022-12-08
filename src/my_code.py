@@ -1,8 +1,8 @@
 #############################
 # Collaborators & Sources: (enter people or resources who/that helped you)
-# my family played and tested the game along with Brennan, Alex, Penelope
-# https://www.datacamp.com/tutorial/python-arrays helped me with arrays
-#
+# my family played and tested the game along with Brennan, Alex, Penelope, Nico, and Rodger
+# https://www.datacamp.com/tutorial/python-arrays helped me with arrays. I just needed the syntax I already
+# knew how to use arrays from robotics coding training
 #############################
 import random
 
@@ -10,8 +10,11 @@ import numpy
 
 
 # Write code here:
-def lose():
-    print("you have 0 crumbs")
+def calculate(x, y):
+    if x == 1:
+        return (5 + 5 * y) - 5
+    else:
+        return (10 + 10 * y) - 10
 
 
 game_playing = input("would you like to play pigeon simulator ")
@@ -19,8 +22,8 @@ money = 0
 inventory = numpy.array([0, 0, 0])
 while game_playing == "pigeon simulator" or "yes":  # repeats the things below until you win or quit
     fate = input("do you want to beg for crumbs, sell things, buy things, steal bread, steal a pizza or end game ")
-    chance = random.randint(1, 100)
-    beg_money = random.randint(1, 10)
+    chance = random.randint(1, 100)  # used to give a random number and used for all the money making techniques
+    beg_money = random.randint(1, 10)   # the next 2 lines give a random amount of money every time you win money
     bank_money = random.randint(1000, 1500)
     steal_money = random.randint(10, 30)
     donuts = int(inventory[0])
@@ -38,10 +41,11 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
                      "the chances to steal a pizza) for 300 crumbs, beak extension(increases the chance of stealing \n"
                      "bread) for 100 crumbs or a bakery(win the game) for 3,000 crumbs ")
         if shop == "baguette":
-            if money >= 5:
-                inventory[0] += 1
-                print("you have bought a baguette")
-                money -= 5
+            amount = int(input("how many baguettes do you want? "))
+            if money >= 5 * amount:
+                inventory[0] += amount
+                print(f"you have bought {amount} baguettes")
+                money -= 5 * amount
                 print(f"you have {money} crumbs")
             else:
                 print("you don't have enough crumbs")
@@ -70,7 +74,7 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
                         print("your so cool!")
                     elif i == 2:
                         print("your such a gamer!")
-                        break
+                break
             else:
                 print("you don't have enough crumbs")
     if fate == "steal a pizza":  # high chance to lose all crumbs high reward upgrade increases chances
@@ -83,7 +87,7 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
                 else:
                     print("you got caught and lost all your crumbs")
                     money -= money
-                    lose()
+                    print("you have 0 crumbs")
             else:
                 if chance >= 95:
                     print(f"you successfully stole a pizza and earned {bank_money} crumbs")
@@ -92,7 +96,7 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
                 else:
                     print("you got caught and lost all your crumbs")
                     money -= money
-                    lose()
+                    print("you have 0 crumbs")
         else:
             if inventory[1] > 0:
                 if chance >= 50:
@@ -102,7 +106,7 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
                 else:
                     print("you got caught and lost all your crumbs")
                     money -= money
-                    lose()
+                    print("you have 0 crumbs")
             else:
                 if chance >= 95:
                     print(f"you successfully stole a pizza and earned {bank_money} crumbs")
@@ -117,7 +121,7 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
             if 1 <= chance <= 10:
                 print("you got caught and lost all your crumbs")
                 money -= money
-                lose()
+                print("you have 0 crumbs")
             elif 10 < chance <= 50:
                 print("you got caught before you could steal the bread but you got away")
             else:
@@ -128,7 +132,7 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
             if 1 <= chance <= 3:
                 print("you got caught and lost all your crumbs")
                 money -= money
-                lose()
+                print("you have 0 crumbs")
             elif 3 < chance <= 35:
                 print("you got caught before you could steal the bread but you got away.")
             else:
@@ -145,11 +149,11 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
                 else:
                     print("You: would you like to buy my baguette")
                     haggle = int(input("Random pigeon: how many crumbs? "))
-                    if haggle <= (5 + 5 * donuts) - 5:
+                    if haggle <= calculate(1, sold):
                         print("Random pigeon: sure")
                         money += haggle
                         print(f"you have {money} crumbs")
-                    elif haggle < (10 + 5 * donuts) - 5:
+                    elif haggle <= calculate(2, sold):
                         if chance < 50:
                             print("Random pigeon: that's a bit steep but ok")
                             money += haggle
