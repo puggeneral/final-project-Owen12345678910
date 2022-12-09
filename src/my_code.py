@@ -6,8 +6,6 @@
 #############################
 import random
 
-import numpy
-
 
 # Write code here:
 def calculate(x, y):
@@ -19,14 +17,14 @@ def calculate(x, y):
 
 game_playing = input("would you like to play pigeon simulator ")
 money = 0
-inventory = numpy.array([0, 0, 0])
+inventory = [0, 0, 0]
 while game_playing == "pigeon simulator" or "yes":  # repeats the things below until you win or quit
     fate = input("do you want to beg for crumbs, sell things, buy things, steal bread, steal a pizza or end game ")
     chance = random.randint(1, 100)  # used to give a random number and used for all the money making techniques
     beg_money = random.randint(1, 10)   # the next 2 lines give a random amount of money every time you win money
     bank_money = random.randint(1000, 1500)
     steal_money = random.randint(10, 30)
-    donuts = int(inventory[0])
+    donuts = inventory[0]
     if fate == "beg for crumbs" or fate == "beg":  # gives the user either 1-10 crumbs or nothing
         if 50 < chance <= 100:
             print(f"you earned {beg_money} crumbs")
