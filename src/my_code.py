@@ -18,7 +18,7 @@ def calculate(x, y):
 game_playing = input("would you like to play pigeon simulator ")
 money = 0
 inventory = [0, 0, 0]
-while game_playing == "pigeon simulator" or "yes":  # repeats the things below until you win or quit
+while game_playing == "pigeon simulator" or game_playing == "yes":  # repeats the things below until you win or quit
     fate = input("do you want to beg for crumbs, sell things, buy things, steal bread, steal a pizza or end game ")
     chance = random.randint(1, 100)  # used to give a random number and used for all the money making techniques
     beg_money = random.randint(1, 10)   # the next 2 lines give a random amount of money every time you win money
@@ -150,11 +150,13 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
                     if haggle <= calculate(1, sold):
                         print("Random pigeon: sure")
                         money += haggle
+                        inventory[0] -= sold
                         print(f"you have {money} crumbs")
                     elif haggle <= calculate(2, sold):
                         if chance < 50:
                             print("Random pigeon: that's a bit steep but ok")
                             money += haggle
+                            inventory[0] -= sold
                             print(f"you have {money} crumbs")
                         else:
                             print("Random pigeon: no way that is a crazy expensive baguette")
@@ -162,6 +164,7 @@ while game_playing == "pigeon simulator" or "yes":  # repeats the things below u
                         if chance > 99:
                             print("Random pigeon:I don't have anything else to buy so I will take it")
                             money += haggle
+                            inventory[0] -= sold
                             print(f"you have {money} crumbs")
                         else:
                             print("Random pigeon: you must be nuts charging that price for a baguette")
