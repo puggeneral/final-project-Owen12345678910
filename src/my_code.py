@@ -26,11 +26,11 @@ while game_playing == "pigeon simulator" or game_playing == "yes":  # repeats th
     steal_money = random.randint(10, 30)
     donuts = inventory[0]
     if fate == "beg for crumbs" or fate == "beg":  # gives the user either 1-10 crumbs or nothing
-        if 50 < chance <= 100:
+        if 40 < chance <= 100:
             print(f"you earned {beg_money} crumbs")
             money += beg_money
             print(f"you have {money} crumbs")
-        elif 1 <= chance < 50:
+        elif 1 <= chance < 40:
             print("you didn't get any crumbs")
             print(f"you have {money} crumbs")
     if fate == "buy things" or fate == "buy":  # this is the shop where you can buy upgrades
